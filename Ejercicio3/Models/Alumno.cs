@@ -7,7 +7,7 @@ namespace Ejercicio3.Models
 {
     public class Alumno
     {
-        public int Boleta { get; set; } //Clave primaria
+        public int BoletaAlumno { get; set; } //Clave primaria
         public string Nombre { get; set; }
         public string CURP { get; set; }
         public DateTime FechaNac { get; set; }

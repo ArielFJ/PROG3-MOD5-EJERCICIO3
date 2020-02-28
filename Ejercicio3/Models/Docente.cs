@@ -11,5 +11,7 @@ namespace Ejercicio3.Models
         public int IdEmpleado { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }
+        //public List<Universidad> Universidades { get; set; }
+        //public List<Maestria> Maestrias { get; set; }
     }
 }
