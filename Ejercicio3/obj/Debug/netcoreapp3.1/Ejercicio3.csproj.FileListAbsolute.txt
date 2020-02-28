@@ -33,3 +33,11 @@ D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\o
 D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Ejercicio3.dll
 D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Ejercicio3.pdb
 D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Ejercicio3.csproj.CopyComplete
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\List.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Docente\List.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Maestria\List.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Universidad\List.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\Agregar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\Actualizar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\Eliminar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\Maestrias.cshtml.g.cs

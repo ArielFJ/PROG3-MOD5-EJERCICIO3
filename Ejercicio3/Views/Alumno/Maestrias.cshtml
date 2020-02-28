@@ -1,0 +1,24 @@
+﻿@model Alumno
+
+<h2 class="display-4">Maestrías de @Model.Nombre</h2>
+
+@if (Model.Maestrias.Count > 0)
+{
+    <div class="card-columns">
+        @foreach (var item in Model.Maestrias)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5>@item.Nombre</h5>
+                    <h5>@item.Duracion</h5>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h3 class="alert alert-info">Este alumno no tiene maestrías.</h3>
+
+    <a class="btn btn-primary" asp-controller="Alumno" asp-action="AgregarMaestria">Agregar Maestría</a>
+}

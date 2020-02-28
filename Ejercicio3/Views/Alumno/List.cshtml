@@ -1,1 +1,40 @@
-﻿
+﻿@model List<Alumno>
+@{
+    ViewData["Title"] = "Alumnos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Alumnos</h1>
+
+    <div class="mt-4">
+        @if (Model.Count > 0)
+        {
+            <a class="btn btn-success text-white" asp-controller="Alumno" asp-action="Agregar">Agregar Alumno</a>
+            <table class="table mt-3">
+                <tr>
+                    <th>Boleta</th>
+                    <th>Nombre</th>
+                    <th>CURP</th>
+                    <th>Fecha De Nacimiento</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>@item.BoletaAlumno</td>
+                <td>@item.Nombre</td>
+                <td>@item.CURP</td>
+                <td>@item.FechaNac.ToShortDateString()</td>
+                <td><a class="btn btn-info" asp-controller="Alumno" asp-action="Maestrias" asp-route-id="@item.BoletaAlumno">Ver Maestrías</a></td>
+                <td><a class="btn btn-danger" asp-controller="Alumno" asp-action="Eliminar" asp-route-id="@item.BoletaAlumno">Eliminar</a></td>
+                <td><a class="btn btn-warning" asp-controller="Alumno" asp-action="Actualizar" asp-route-id="@item.BoletaAlumno">Actualizar</a></td>
+            </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <h3 class="alert alert-info">Aún no se ha añadido ningún alumno.</h3>
+            <a class="btn btn-success text-white" asp-controller="Alumno" asp-action="Agregar">Agregar Alumno</a>
+        }
+    </div>
+</div>
