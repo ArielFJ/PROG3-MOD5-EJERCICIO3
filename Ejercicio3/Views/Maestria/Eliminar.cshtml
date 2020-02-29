@@ -11,6 +11,16 @@
 
             <a class="btn btn-primary" asp-controller="Maestria" asp-action="List">Volver</a>
         }
+        else if (UniversidadManager.Instance.MaestriaDocenteDependencia(Model.IdMaestria))
+        {
+            <h3 class="alert alert-info">No puede borrar</h3>
+            <p>
+                Esta maestría tiene actualmente docentes que la están impartiendo, por lo que
+                primero tiene que dar de baja a dichos docentes para borrar esta maestría.
+            </p>
+
+            <a class="btn btn-primary" asp-controller="Maestria" asp-action="List">Volver</a>
+        }
         else
         {
             <h3 class="alert alert-danger">¿Está seguro de borrar?</h3>
@@ -27,4 +37,4 @@
             </form>
         }
 
-        </div>
+    </div>

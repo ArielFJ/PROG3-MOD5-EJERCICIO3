@@ -105,6 +105,7 @@ namespace Ejercicio3.Controllers
                 {
                     ViewBag.hasError = false;
                     maestria.Docentes.Add(docente);
+                    docente.Maestrias.Add(maestria);
                     return RedirectToAction("Docentes", new { id = idMaestria });
                 }
                 else
@@ -123,6 +124,7 @@ namespace Ejercicio3.Controllers
             var docente = UniversidadManager.Instance.ObtenerDocente(idDocente);
 
             maestria.Docentes.Remove(docente);
+            docente.Maestrias.Remove(maestria);
 
             return RedirectToAction("Docentes", new { id = idMaestria });
         }

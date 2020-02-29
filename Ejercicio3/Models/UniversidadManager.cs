@@ -111,5 +111,23 @@ namespace Ejercicio3.Models
                         return true;
             return false;
         }
+
+        public bool MaestriaDocenteDependencia(int id)
+        {
+            foreach (var item in Docentes)
+                foreach (var maestria in item.Maestrias)
+                    if (maestria.IdMaestria == id)
+                        return true;
+            return false;
+        }
+
+        public bool DocenteMaestriaDependencia(int id)
+        {
+            foreach (var item in Maestrias)
+                foreach (var docente in item.Docentes)
+                    if (docente.IdEmpleado == id)
+                        return true;
+            return false;
+        }
     }
 }

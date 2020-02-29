@@ -1,0 +1,32 @@
+﻿@model Docente
+
+<h1 class="display-4 text-center">Actualizar Maestría</h1>
+<h3 class="text-info mt-4">Actualice los campos necesarios y pulse Guardar.</h3>
+<form asp-controller="Docente" asp-action="Actualizar" method="post" class="mt-4">
+    <div class="text-center row">
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" type="number" step="0.5" min="0.5" max="6" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+        </div>
+
+       
+        <div class="form-group">
+            <div class="col-md-5">
+                <button type="submit" class="btn btn-success mt-4">Guardar</button>
+            </div>
+        </div>
+    </div>
+</form>
+<a class="btn btn-primary" asp-controller="Docente" asp-action="List">Volver</a>

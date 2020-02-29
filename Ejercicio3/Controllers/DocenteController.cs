@@ -32,5 +32,34 @@ namespace Ejercicio3.Controllers
             }
             return View(docente);
         }
+
+        public IActionResult Eliminar(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var docente = UniversidadManager.Instance.ObtenerDocente((int)id);
+
+            if (docente == null) return NotFound();
+
+            return View(docente);
+        }
+
+        [HttpPost]
+        public IActionResult Eliminar(int id)
+        {
+            UniversidadManager.Instance.EliminarDocente(id);
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Maestrias(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var docente = UniversidadManager.Instance.ObtenerDocente((int)id);
+
+            if (docente == null) return NotFound();
+
+            return View(docente);
+        }
     }
 }

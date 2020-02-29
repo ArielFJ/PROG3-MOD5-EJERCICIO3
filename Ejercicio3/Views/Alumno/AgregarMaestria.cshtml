@@ -30,10 +30,10 @@
                                         <p>Duración: @item.Duracion años</p>
                                         @if(item.Docentes.Count > 0)
                                         {
-                                            <p><b>Docentes:</b></p>
+                                            <p><b>Docentes:</b></p> 
                                             @foreach(var d in item.Docentes)
                                             {
-                                                <p>@d</p>
+                                                <p>@d.Nombre</p>
                                             }
                                         }
                                     </div>

@@ -1,0 +1,41 @@
+﻿@model Docente
+
+<h2 class="display-4">Maestrías impartidas por @Model.Nombre</h2>
+
+@if (Model.Maestrias.Count > 0)
+{
+    <div class="card-columns">
+        @foreach (var item in Model.Maestrias)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5>@item.Nombre</h5>
+                    <h5>@item.Duracion años</h5>
+                    <button class="btn btn-danger" id="btnBorrar" onclick="deleteMastery(@Model.IdEmpleado, @item.IdMaestria)">Eliminar</button>
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+        function deleteMastery(idAlumno, idMaestria) {
+            $.ajax({
+                type: 'POST',
+                url: '/Alumno/EliminarMaestria/',
+                data: { idAlumno, idMaestria },
+                success: function () {
+                    location.reload();
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        
+    </script>
+}
+else
+{
+    <h3 class="alert alert-info">Este docente no imparte maestrías.</h3>
+
+}
+<a class="btn btn-primary" asp-controller="Docente" asp-action="AgregarMaestria" asp-route-id="@Model.IdEmpleado">Agregar Maestría</a>
