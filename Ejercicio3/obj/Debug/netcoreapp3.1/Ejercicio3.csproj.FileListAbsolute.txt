@@ -43,3 +43,8 @@ D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\o
 D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\Maestrias.cshtml.g.cs
 D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Alumno\AgregarMaestria.cshtml.g.cs
 D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Maestria\Agregar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Maestria\Actualizar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Maestria\Eliminar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Maestria\Docentes.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Docente\Agregar.cshtml.g.cs
+D:\Documents\_ITLA\PROGRAMACION\PROGRAMACION 3\Módulo 5\Ejercicio3\Ejercicio3\obj\Debug\netcoreapp3.1\Razor\Views\Maestria\AgregarDocente.cshtml.g.cs

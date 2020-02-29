@@ -47,7 +47,7 @@ namespace Ejercicio3.Controllers
         [HttpPost]
         public IActionResult Eliminar(int id)
         {
-            UniversidadManager.Instance.EliminarAlumno(id);
+            UniversidadManager.Instance.EliminarMaestria(id);
             return RedirectToAction("List");
         }
 
@@ -55,20 +55,76 @@ namespace Ejercicio3.Controllers
         {
             if (id == null) return NotFound();
 
-            var alumno = UniversidadManager.Instance.ObtenerAlumno((int)id);
+            var maestria = UniversidadManager.Instance.ObtenerMaestria((int)id);
 
-            if (alumno == null) return NotFound();
+            if (maestria == null) return NotFound();
 
-            return View(alumno);
+            return View(maestria);
         }
 
         [HttpPost]
-        public IActionResult Actualizar(Alumno nuevo, int id)
+        public IActionResult Actualizar(Maestria nuevo, int id)
         {
 
-            UniversidadManager.Instance.ActualizarAlumno(id, nuevo);
+            UniversidadManager.Instance.ActualizarMaestria(id, nuevo);
             return RedirectToAction("List");
         }
 
+        public IActionResult Docentes(int? id)  
+        {
+            if (id == null) return NotFound();
+
+            var maestria = UniversidadManager.Instance.ObtenerMaestria((int)id);
+
+            if (maestria == null) return NotFound();
+
+            return View(maestria);
+        }
+
+        public IActionResult AgregarDocente(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var maestria = UniversidadManager.Instance.ObtenerMaestria((int)id);
+
+            if (maestria == null) return NotFound();
+
+            ViewBag.hasError = false;
+
+            return View(maestria);
+        }
+
+        [HttpPost]
+        public IActionResult AgregarDocente(int idMaestria, int idDocente)
+        {
+            var maestria = UniversidadManager.Instance.ObtenerMaestria(idMaestria);
+            var docente = UniversidadManager.Instance.ObtenerDocente(idDocente);
+            if (docente != null)
+            {
+                if (!maestria.Docentes.Contains(docente))
+                {
+                    ViewBag.hasError = false;
+                    maestria.Docentes.Add(docente);
+                    return RedirectToAction("Docentes", new { id = idMaestria });
+                }
+                else
+                {
+                    ViewBag.hasError = true;
+                    ViewBag.error = $"{docente.Nombre} ya imparte la maestría de {maestria.Nombre}";
+                }
+            }
+            return View(maestria);
+        }
+
+        [HttpPost]
+        public IActionResult EliminarDocente(int idMaestria, int idDocente)
+        {
+            var maestria = UniversidadManager.Instance.ObtenerMaestria(idMaestria);
+            var docente = UniversidadManager.Instance.ObtenerDocente(idDocente);
+
+            maestria.Docentes.Remove(docente);
+
+            return RedirectToAction("Docentes", new { id = idMaestria });
+        }
     }
 }

@@ -15,7 +15,11 @@ namespace Ejercicio3.Models
             new Alumno(){ BoletaAlumno = 1, Nombre = "Ariel", CURP="213438223", FechaNac = DateTime.Parse("7,16,2001")},
             new Alumno(){ BoletaAlumno = 2, Nombre = "José", CURP="3554321", FechaNac = DateTime.Parse("9,26,1990")},
         };
-        public List<Docente> Docentes { get; } = new List<Docente>();
+        public List<Docente> Docentes { get; } = new List<Docente>() 
+        {
+            new Docente(){IdEmpleado=1, Nombre ="Rafael", Telefono="8098988989" },
+            new Docente(){IdEmpleado=2, Nombre ="Antonio", Telefono="4321321312" },
+        };
         public List<Maestria> Maestrias { get; } = new List<Maestria>()
         { 
             new Maestria(){IdMaestria=0, Nombre="Desarrollo de Videojuegos", Duracion=1.5f},
@@ -66,6 +70,46 @@ namespace Ejercicio3.Models
         {
             int index = Maestrias.FindIndex(m => m.IdMaestria == id);
             Maestrias[index] = datos;
+        }
+
+        public void EliminarMaestria(int id)
+        {
+            Maestrias.Remove(ObtenerMaestria(id));
+        }
+
+        // Manejo de docentes
+
+        public void AgregarDocente(Docente docente)
+        {
+            var id = Docentes.Count > 0 ? Docentes.Max(s => s.IdEmpleado) + 1 : 0;
+            docente.IdEmpleado = id;
+            Docentes.Add(docente);
+        }
+
+        public Docente ObtenerDocente(int id)
+        {
+            return Docentes.FirstOrDefault(m => m.IdEmpleado == id);
+        }
+
+        public void ActualizarDocente(int id, Docente datos)
+        {
+            int index = Docentes.FindIndex(m => m.IdEmpleado == id);
+            Docentes[index] = datos;
+        }
+
+        public void EliminarDocente(int id)
+        {
+            Docentes.Remove(ObtenerDocente(id));
+        }
+
+        // Manejo de dependencias
+        public bool MaestriaAlumnoDependencia(int id)
+        {
+            foreach (var item in Alumnos)
+                foreach(var maestria in item.Maestrias)
+                    if (maestria.IdMaestria == id)
+                        return true;
+            return false;
         }
     }
 }

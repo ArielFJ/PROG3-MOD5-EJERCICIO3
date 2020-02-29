@@ -10,6 +10,6 @@ namespace Ejercicio3.Models
     {
         public int IdUniversidad { get; set; }
         public string Nombre { get; set; }
-        public List<Docente> Docentes { get; set; }
+        public List<Docente> Docentes { get; set; } = new List<Docente>();
     }
 }

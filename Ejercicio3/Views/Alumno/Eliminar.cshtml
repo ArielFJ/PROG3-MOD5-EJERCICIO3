@@ -1,9 +1,9 @@
 ﻿@model Alumno
 
 <div class="text-center">
-    <h3 class="alert alert-danger">¿Está seguro de borrar el alumno?</h3>
+    <h3 class="alert alert-danger">¿Está seguro de borrar?</h3>
     <p>
-        El producto <b>@Model.Nombre</b> con ID <b>@Model.BoletaAlumno</b>, cuyo CURP es: <b>@Model.CURP</b>,
+        El alumno <b>@Model.Nombre</b> con ID <b>@Model.BoletaAlumno</b>, cuyo CURP es: <b>@Model.CURP</b>,
         el cual tiene una fecha de nacimiento de <b>@Model.FechaNac.ToShortDateString()</b> 
         será eliminado. Presione el botón <b>Aceptar</b> para confirmar.
         De lo contrario, pulse <b>Volver</b>.

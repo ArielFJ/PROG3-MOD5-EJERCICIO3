@@ -1,5 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Docente>
 @{
+    ViewData["Title"] = "Docentes";
 }
+
+<div class="text-center">
+    <h1 class="display-4">Docentes</h1>
+
+    <div class="mt-4">
+        @if (Model.Count > 0)
+        {
+            <a class="btn btn-success text-white" asp-controller="Docente" asp-action="Agregar">Agregar</a>
+            <table class="table mt-3">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>@item.IdEmpleado</td>
+                <td>@item.Nombre</td>
+                <td>@item.Telefono</td>
+                <td><a class="btn btn-info" asp-controller="Docente" asp-action="Maestrias" asp-route-id="@item.IdEmpleado">Ver Maestrías</a></td>
+                <td><a class="btn btn-info" asp-controller="Docente" asp-action="Universidades" asp-route-id="@item.IdEmpleado">Ver Universidades</a></td>
+                <td><a class="btn btn-danger" asp-controller="Docente" asp-action="Eliminar" asp-route-id="@item.IdEmpleado">Eliminar</a></td>
+                <td><a class="btn btn-warning" asp-controller="Docente" asp-action="Actualizar" asp-route-id="@item.IdEmpleado">Actualizar</a></td>
+            </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <h3 class="alert alert-info">Aún no se ha añadido ningún docente.</h3>
+            <a class="btn btn-success text-white" asp-controller="Docente" asp-action="Agregar">Agregar Docente</a>
+        }
+    </div>
+</div>
