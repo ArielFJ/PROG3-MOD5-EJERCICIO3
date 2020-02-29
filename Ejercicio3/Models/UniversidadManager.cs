@@ -16,7 +16,11 @@ namespace Ejercicio3.Models
             new Alumno(){ BoletaAlumno = 2, Nombre = "José", CURP="3554321", FechaNac = DateTime.Parse("9,26,1990")},
         };
         public List<Docente> Docentes { get; } = new List<Docente>();
-        public List<Maestria> Maestrias { get; } = new List<Maestria>();
+        public List<Maestria> Maestrias { get; } = new List<Maestria>()
+        { 
+            new Maestria(){IdMaestria=0, Nombre="Desarrollo de Videojuegos", Duracion=1.5f},
+            new Maestria(){IdMaestria=1, Nombre="Ciencia de Datos", Duracion=2f},
+        };
         public List<Universidad> Universidades { get; } = new List<Universidad>();
 
         // Manejo de alumnos
@@ -55,6 +59,11 @@ namespace Ejercicio3.Models
             var id = Maestrias.Count > 0 ? Maestrias.Max(s => s.IdMaestria) + 1 : 0;
             maestria.IdMaestria = id;
             Maestrias.Add(maestria);
+        }
+
+        public Maestria ObtenerMaestria(int id)
+        {
+            return Maestrias.FirstOrDefault(m => m.IdMaestria == id);
         }
     }
 }

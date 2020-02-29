@@ -19,7 +19,7 @@ namespace Ejercicio3.Models
         [Required]
         [Range(0,6)]
         [Display(Name = "Duración en Años")]
-        public float Duracion { get; set; }        
-        public List<Docente> Docentes { get; set; }
+        public float Duracion { get; set; }
+        public List<Docente> Docentes { get; set; } = new List<Docente>();
     }
 }

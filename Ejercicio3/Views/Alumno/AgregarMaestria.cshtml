@@ -6,27 +6,51 @@
 @if (UniversidadManager.Instance.Maestrias.Count > 0)
 {
     <h1 class="display-4 text-center">Escoja la maestría que @Model.Nombre va a tomar</h1>
+    @if((bool)ViewBag.hasError)
+    {
+        <div class="alert alert-warning">@ViewBag.error</div>
+    }
 
-    <form asp-controller="Alumno" asp-action="AgregarMaestria" asp-route-id="@Model.BoletaAlumno" method="post" class="mt-4">
+    <!--form asp-controller="Alumno" asp-action="AgregarMaestria" method="post" class="mt-4"-->
         <div class="text-center row">
             <div class="form-group">
                 <div class="col-md-12">
-                    <select class="form-control" asp-for="Maestrias">
+                    <div class="card-columns">
                         @foreach (var item in UniversidadManager.Instance.Maestrias)
                         {
-                            <option value="@item">@item.Nombre</option>
-                        }
-                    </select>
+                            <div class="card">
+                                <form method="post" asp-controller="Alumno" 
+                                       asp-action="AgregarMaestria"
+                                      asp-route-idAlumno="@Model.BoletaAlumno"
+                                       asp-route-idMaestria="@item.IdMaestria">
+                                    <div class="card-title">
+                                        <button class="btn btn-link ml-lg-4" type="submit">@item.Nombre</button><br />
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Duración: @item.Duracion años</p>
+                                        @if(item.Docentes.Count > 0)
+                                        {
+                                            <p><b>Docentes:</b></p>
+                                            @foreach(var d in item.Docentes)
+                                            {
+                                                <p>@d</p>
+                                            }
+                                        }
+                                    </div>
+                                </form>
+                            </div>
+                        }   
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
+            <!--div class="form-group">
                 <div class="col-md-5">
                     <button type="submit" class="btn btn-success mt-4">Guardar</button>
                 </div>
-            </div>
+            </!--div -->
         </div>
-    </form>
+    <!--/form-->
 }
 else
 {

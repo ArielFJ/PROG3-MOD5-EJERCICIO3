@@ -81,15 +81,39 @@ namespace Ejercicio3.Controllers
             return View(alumno);
         }
 
-        public IActionResult AgregarMaestria(int id)
+        public IActionResult AgregarMaestria(int? id)
         {
-            return View(UniversidadManager.Instance.ObtenerAlumno(id));
+            if (id == null) return NotFound();
+
+            var alumno = UniversidadManager.Instance.ObtenerAlumno((int)id);
+
+            if (alumno == null) return NotFound();
+
+            ViewBag.hasError = false;
+
+            return View(alumno);
         }
 
         [HttpPost]
-        public IActionResult AgregarMaestria(int id, Maestria maestria)
+        public IActionResult AgregarMaestria(int idAlumno, int idMaestria)
         {
-            return Json(maestria);
+            var alumno = UniversidadManager.Instance.ObtenerAlumno(idAlumno);
+            var maestria = UniversidadManager.Instance.ObtenerMaestria(idMaestria);
+            if (maestria != null)
+            {
+                if (!alumno.Maestrias.Contains(maestria))
+                {
+                    ViewBag.hasError = false;
+                    alumno.Maestrias.Add(maestria);
+                    return RedirectToAction("Maestrias", new { id = idAlumno});
+                }
+                else
+                {
+                    ViewBag.hasError = true;
+                    ViewBag.error = $"{alumno.Nombre} ya cursa la maestría de {maestria.Nombre}";
+                }
+            }
+            return View(alumno);
         }
     }
 }
