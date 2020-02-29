@@ -47,10 +47,6 @@ namespace Ejercicio3.Models
             return Alumnos.FirstOrDefault(a => a.BoletaAlumno == id);
         }
 
-        public void AgregarMaestriaAlumno(int id, Maestria maestria)
-        {
-            ObtenerAlumno(id).Maestrias.Add(maestria);
-        }
 
         // Manejo de Maestrias
 
@@ -64,6 +60,12 @@ namespace Ejercicio3.Models
         public Maestria ObtenerMaestria(int id)
         {
             return Maestrias.FirstOrDefault(m => m.IdMaestria == id);
+        }
+
+        public void ActualizarMaestria(int id, Maestria datos)
+        {
+            int index = Maestrias.FindIndex(m => m.IdMaestria == id);
+            Maestrias[index] = datos;
         }
     }
 }

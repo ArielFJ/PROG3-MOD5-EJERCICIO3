@@ -10,11 +10,28 @@
             <div class="card">
                 <div class="card-body">
                     <h5>@item.Nombre</h5>
-                    <h5>@item.Duracion</h5>
+                    <h5>@item.Duracion años</h5>
+                    <button class="btn btn-danger" id="btnBorrar" onclick="deleteMastery(@Model.BoletaAlumno, @item.IdMaestria)">Eliminar</button>
                 </div>
             </div>
         }
     </div>
+    <script>
+        function deleteMastery(idAlumno, idMaestria) {
+            $.ajax({
+                type: 'POST',
+                url: '/Alumno/EliminarMaestria/',
+                data: { idAlumno, idMaestria },
+                success: function () {
+                    location.reload();
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+        
+    </script>
 }
 else
 {

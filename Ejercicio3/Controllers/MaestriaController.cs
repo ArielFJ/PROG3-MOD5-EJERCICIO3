@@ -37,11 +37,11 @@ namespace Ejercicio3.Controllers
         {
             if (id == null) return NotFound();
 
-            var alumno = UniversidadManager.Instance.ObtenerAlumno((int)id);
+            var maestria = UniversidadManager.Instance.ObtenerMaestria((int)id);
 
-            if (alumno == null) return NotFound();
+            if (maestria == null) return NotFound();
 
-            return View(alumno);
+            return View(maestria);
         }
 
         [HttpPost]

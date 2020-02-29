@@ -115,5 +115,16 @@ namespace Ejercicio3.Controllers
             }
             return View(alumno);
         }
+
+        [HttpPost]
+        public IActionResult EliminarMaestria(int idAlumno, int idMaestria)
+        {
+            var alumno = UniversidadManager.Instance.ObtenerAlumno(idAlumno);
+            var maestria = UniversidadManager.Instance.ObtenerMaestria(idMaestria);
+
+            alumno.Maestrias.Remove(maestria);
+
+            return RedirectToAction("Maestrias", new { id = idAlumno });
+        }
     }
 }
