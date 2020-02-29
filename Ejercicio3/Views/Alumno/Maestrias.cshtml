@@ -20,5 +20,5 @@ else
 {
     <h3 class="alert alert-info">Este alumno no tiene maestrías.</h3>
 
-    <a class="btn btn-primary" asp-controller="Alumno" asp-action="AgregarMaestria">Agregar Maestría</a>
+    <a class="btn btn-primary" asp-controller="Alumno" asp-action="AgregarMaestria" asp-route-id="@Model.BoletaAlumno">Agregar Maestría</a>
 }

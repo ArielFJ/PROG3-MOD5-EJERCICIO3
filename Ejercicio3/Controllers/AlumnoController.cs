@@ -83,7 +83,13 @@ namespace Ejercicio3.Controllers
 
         public IActionResult AgregarMaestria(int id)
         {
-            return View();
+            return View(UniversidadManager.Instance.ObtenerAlumno(id));
+        }
+
+        [HttpPost]
+        public IActionResult AgregarMaestria(int id, Maestria maestria)
+        {
+            return Json(maestria);
         }
     }
 }

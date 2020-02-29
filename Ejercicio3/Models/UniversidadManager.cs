@@ -47,5 +47,14 @@ namespace Ejercicio3.Models
         {
             ObtenerAlumno(id).Maestrias.Add(maestria);
         }
+
+        // Manejo de Maestrias
+
+        public void AgregarMaestria(Maestria maestria)
+        {
+            var id = Maestrias.Count > 0 ? Maestrias.Max(s => s.IdMaestria) + 1 : 0;
+            maestria.IdMaestria = id;
+            Maestrias.Add(maestria);
+        }
     }
 }
