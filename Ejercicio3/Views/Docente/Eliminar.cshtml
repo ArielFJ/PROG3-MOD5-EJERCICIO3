@@ -1,5 +1,7 @@
 ﻿@model Docente
-
+@{
+    ViewData["Title"] = "Eliminar Docente";
+}
 <div class="text-center">
     @if (UniversidadManager.Instance.DocenteMaestriaDependencia(Model.IdEmpleado))
     {
@@ -9,7 +11,17 @@
             primero tiene que dar de baja a dichas maestrías para borrar este docente.
         </p>
 
-        <a class="btn btn-primary" asp-controller="Maestria" asp-action="List">Volver</a>
+        <a class="btn btn-primary" asp-controller="Docente" asp-action="List">Volver</a>
+    }
+    else if (UniversidadManager.Instance.UniversidadDocenteDependencia(Model.IdEmpleado))
+    {
+        <h3 class="alert alert-info">No puede borrar</h3>
+        <p>
+            Este docente actualmente está trabajando, por lo que
+            primero tiene que dar de baja a dicho docentes en la universidad en la que trabaja.
+        </p>
+
+        <a class="btn btn-primary" asp-controller="Docente" asp-action="List">Volver</a>
     }
     else
     {

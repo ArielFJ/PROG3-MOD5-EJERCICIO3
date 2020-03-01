@@ -1,14 +1,16 @@
 ﻿@model Alumno
-
+@{
+    ViewData["Title"] = "Eliminar Alumno";
+}
 <div class="text-center">
     <h3 class="alert alert-danger">¿Está seguro de borrar?</h3>
     <p>
         El alumno <b>@Model.Nombre</b> con ID <b>@Model.BoletaAlumno</b>, cuyo CURP es: <b>@Model.CURP</b>,
-        el cual tiene una fecha de nacimiento de <b>@Model.FechaNac.ToShortDateString()</b> 
+        el cual tiene una fecha de nacimiento de <b>@Model.FechaNac.ToShortDateString()</b>
         será eliminado. Presione el botón <b>Aceptar</b> para confirmar.
         De lo contrario, pulse <b>Volver</b>.
     </p>
-    <form method="post" asp-controller="Producto" asp-action="Eliminar" asp-route-id="@Model.BoletaAlumno">
+    <form method="post" asp-controller="Alumno" asp-action="Eliminar" asp-route-id="@Model.BoletaAlumno">
 
         <button type="submit" class="btn btn-danger">Aceptar</button>
         <a class="btn btn-primary" asp-controller="Alumno" asp-action="List">Volver</a>

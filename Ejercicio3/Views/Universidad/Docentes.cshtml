@@ -1,5 +1,7 @@
 ﻿@model Universidad
-
+@{
+    ViewData["Title"] = "Docentes " + Model.Nombre;
+}
 <h2 class="display-4">Docentes de @Model.Nombre</h2>
 
 @if (Model.Docentes.Count > 0)
@@ -27,11 +29,11 @@
                     location.reload();
                 },
                 error: function (data) {
-                    console.log(data); 
+                    console.log(data);
                 }
             });
         }
-        
+
     </script>
 }
 else

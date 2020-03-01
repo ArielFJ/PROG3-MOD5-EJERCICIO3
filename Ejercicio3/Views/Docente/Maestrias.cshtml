@@ -1,4 +1,7 @@
 ﻿@model Docente
+@{
+    ViewData["Title"] = "Maestrías " + Model.Nombre ;
+}
 
 <h2 class="display-4">Maestrías impartidas por @Model.Nombre</h2>
 
@@ -30,7 +33,7 @@
                 }
             });
         }
-        
+
     </script>
 }
 else

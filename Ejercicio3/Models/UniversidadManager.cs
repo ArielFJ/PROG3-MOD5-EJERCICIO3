@@ -10,28 +10,10 @@ namespace Ejercicio3.Models
         public static readonly UniversidadManager Instance = new UniversidadManager();
         private UniversidadManager() { }
 
-        public List<Alumno> Alumnos { get; } = new List<Alumno>()
-        {
-            new Alumno(){ BoletaAlumno = 1, Nombre = "Ariel", CURP="213438223", FechaNac = DateTime.Parse("7,16,2001")},
-            new Alumno(){ BoletaAlumno = 2, Nombre = "José", CURP="3554321", FechaNac = DateTime.Parse("9,26,1990")},
-        };
-        public List<Docente> Docentes { get; } = new List<Docente>()
-        {
-            new Docente(){IdEmpleado=1, Nombre ="Rafael", Telefono="8098988989" },
-            new Docente(){IdEmpleado=2, Nombre ="Antonio", Telefono="4321321312" },
-            new Docente(){IdEmpleado=3, Nombre ="Rosa", Telefono="8098988989" },
-            new Docente(){IdEmpleado=4, Nombre ="Julio", Telefono="4321321312" },
-        };
-        public List<Maestria> Maestrias { get; } = new List<Maestria>()
-        {
-            new Maestria(){IdMaestria=0, Nombre="Desarrollo de Videojuegos", Duracion=1.5f},
-            new Maestria(){IdMaestria=1, Nombre="Ciencia de Datos", Duracion=2f},
-        };
-        public List<Universidad> Universidades { get; } = new List<Universidad>()
-        {
-            new Universidad(){IdUniversidad=1, Nombre="UASD" },
-            new Universidad(){IdUniversidad=2, Nombre="INTEC" },
-        };
+        public List<Alumno> Alumnos { get; } = new List<Alumno>();
+        public List<Docente> Docentes { get; } = new List<Docente>();
+        public List<Maestria> Maestrias { get; } = new List<Maestria>();
+        public List<Universidad> Universidades { get; } = new List<Universidad>();
 
         #region ManejoAlumnos
         public void ActualizarAlumno(int id, Alumno datos)
@@ -172,6 +154,15 @@ namespace Ejercicio3.Models
             foreach (var item in Universidades)
                 foreach (var docente in item.Docentes)
                     if (docente.IdEmpleado == id)
+                        return true;
+            return false;
+        }
+
+        public bool DocenteUniversidadDependencia(int id)
+        {
+            foreach (var item in Docentes)
+                foreach (var universidad in item.Universidades)
+                    if (universidad.IdUniversidad == id)
                         return true;
             return false;
         }

@@ -1,5 +1,7 @@
 ﻿@model Alumno
-
+@{
+    ViewData["Title"] = "Maestrias " + Model.Nombre;
+}
 <h2 class="display-4">Maestrías de @Model.Nombre</h2>
 
 @if (Model.Maestrias.Count > 0)
@@ -30,7 +32,7 @@
                 }
             });
         }
-        
+
     </script>
 }
 else
@@ -39,4 +41,4 @@ else
 
 }
 <a class="btn btn-primary" asp-controller="Alumno" asp-action="AgregarMaestria" asp-route-id="@Model.BoletaAlumno">Agregar Maestría</a>
-<a class="btn btn-primary" asp-controller="Alumno" asp-action="List" >Volver</a>
+<a class="btn btn-primary" asp-controller="Alumno" asp-action="List">Volver</a>

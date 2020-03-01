@@ -16,7 +16,7 @@ namespace Ejercicio3.Models
         public string Nombre { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(18)]
         [Range(0, Int64.MaxValue, ErrorMessage = "Sólo puede contener números")]
         public string CURP { get; set; }
 
