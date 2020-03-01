@@ -17,11 +17,11 @@
         }
     </div>
     <script>
-        function deleteMastery(idAlumno, idMaestria) {
+        function deleteMastery(idDocente, idMaestria) {
             $.ajax({
                 type: 'POST',
-                url: '/Alumno/EliminarMaestria/',
-                data: { idAlumno, idMaestria },
+                url: '/Maestria/EliminarDocente/',
+                data: { idDocente, idMaestria },
                 success: function () {
                     location.reload();
                 },
@@ -39,3 +39,4 @@ else
 
 }
 <a class="btn btn-primary" asp-controller="Docente" asp-action="AgregarMaestria" asp-route-id="@Model.IdEmpleado">Agregar Maestría</a>
+<a class="btn btn-primary" asp-controller="Docente" asp-action="List">Volver</a>

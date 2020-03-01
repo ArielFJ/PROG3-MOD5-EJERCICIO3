@@ -8,26 +8,32 @@ namespace Ejercicio3.Models
     public class UniversidadManager
     {
         public static readonly UniversidadManager Instance = new UniversidadManager();
-        private UniversidadManager() {  }
+        private UniversidadManager() { }
 
-        public List<Alumno> Alumnos { get; } = new List<Alumno>() 
+        public List<Alumno> Alumnos { get; } = new List<Alumno>()
         {
             new Alumno(){ BoletaAlumno = 1, Nombre = "Ariel", CURP="213438223", FechaNac = DateTime.Parse("7,16,2001")},
             new Alumno(){ BoletaAlumno = 2, Nombre = "José", CURP="3554321", FechaNac = DateTime.Parse("9,26,1990")},
         };
-        public List<Docente> Docentes { get; } = new List<Docente>() 
+        public List<Docente> Docentes { get; } = new List<Docente>()
         {
             new Docente(){IdEmpleado=1, Nombre ="Rafael", Telefono="8098988989" },
             new Docente(){IdEmpleado=2, Nombre ="Antonio", Telefono="4321321312" },
+            new Docente(){IdEmpleado=3, Nombre ="Rosa", Telefono="8098988989" },
+            new Docente(){IdEmpleado=4, Nombre ="Julio", Telefono="4321321312" },
         };
         public List<Maestria> Maestrias { get; } = new List<Maestria>()
-        { 
+        {
             new Maestria(){IdMaestria=0, Nombre="Desarrollo de Videojuegos", Duracion=1.5f},
             new Maestria(){IdMaestria=1, Nombre="Ciencia de Datos", Duracion=2f},
         };
-        public List<Universidad> Universidades { get; } = new List<Universidad>();
+        public List<Universidad> Universidades { get; } = new List<Universidad>()
+        {
+            new Universidad(){IdUniversidad=1, Nombre="UASD" },
+            new Universidad(){IdUniversidad=2, Nombre="INTEC" },
+        };
 
-        // Manejo de alumnos
+        #region ManejoAlumnos
         public void ActualizarAlumno(int id, Alumno datos)
         {
             int index = Alumnos.FindIndex(a => a.BoletaAlumno == id);
@@ -50,9 +56,9 @@ namespace Ejercicio3.Models
         {
             return Alumnos.FirstOrDefault(a => a.BoletaAlumno == id);
         }
+        #endregion
 
-
-        // Manejo de Maestrias
+        #region ManejoMaestrias
 
         public void AgregarMaestria(Maestria maestria)
         {
@@ -69,6 +75,7 @@ namespace Ejercicio3.Models
         public void ActualizarMaestria(int id, Maestria datos)
         {
             int index = Maestrias.FindIndex(m => m.IdMaestria == id);
+            datos.IdMaestria = id;
             Maestrias[index] = datos;
         }
 
@@ -76,8 +83,9 @@ namespace Ejercicio3.Models
         {
             Maestrias.Remove(ObtenerMaestria(id));
         }
+        #endregion
 
-        // Manejo de docentes
+        #region ManejoDocentes
 
         public void AgregarDocente(Docente docente)
         {
@@ -94,6 +102,7 @@ namespace Ejercicio3.Models
         public void ActualizarDocente(int id, Docente datos)
         {
             int index = Docentes.FindIndex(m => m.IdEmpleado == id);
+            datos.IdEmpleado = id;
             Docentes[index] = datos;
         }
 
@@ -101,12 +110,40 @@ namespace Ejercicio3.Models
         {
             Docentes.Remove(ObtenerDocente(id));
         }
+        #endregion
 
-        // Manejo de dependencias
+        #region ManejoUniversidades
+
+        public void AgregarUnivesidad(Universidad universidad)
+        {
+            var id = Universidades.Count > 0 ? Universidades.Max(s => s.IdUniversidad) + 1 : 0;
+            universidad.IdUniversidad = id;
+            Universidades.Add(universidad);
+        }
+
+        public Universidad ObtenerUniversidad(int id)
+        {
+            return Universidades.FirstOrDefault(m => m.IdUniversidad == id);
+        }
+
+        public void ActualizarUnivesidad(int id, Universidad datos)
+        {
+            int index = Universidades.FindIndex(m => m.IdUniversidad == id);
+            datos.IdUniversidad = id;
+            Universidades[index] = datos;
+        }
+
+        public void EliminarUniversidad(int id)
+        {
+            Universidades.Remove(ObtenerUniversidad(id));
+        }
+        #endregion
+
+        #region ManejoDependencias
         public bool MaestriaAlumnoDependencia(int id)
         {
             foreach (var item in Alumnos)
-                foreach(var maestria in item.Maestrias)
+                foreach (var maestria in item.Maestrias)
                     if (maestria.IdMaestria == id)
                         return true;
             return false;
@@ -129,5 +166,15 @@ namespace Ejercicio3.Models
                         return true;
             return false;
         }
+
+        public bool UniversidadDocenteDependencia(int id)
+        {
+            foreach (var item in Universidades)
+                foreach (var docente in item.Docentes)
+                    if (docente.IdEmpleado == id)
+                        return true;
+            return false;
+        }
+        #endregion
     }
 }

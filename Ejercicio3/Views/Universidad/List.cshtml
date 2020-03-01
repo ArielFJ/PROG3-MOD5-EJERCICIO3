@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Universidad>
 @{
+    ViewData["Title"] = "Universidades";
 }
+
+<div class="text-center">
+    <h1 class="display-4">Universidades</h1>
+
+    <div class="mt-4">
+        @if (Model.Count > 0)
+        {
+            <a class="btn btn-success text-white" asp-controller="Universidad" asp-action="Agregar">Agregar</a>
+            <table class="table mt-3">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>@item.IdUniversidad</td>
+                <td>@item.Nombre</td>
+                <td><a class="btn btn-info" asp-controller="Universidad" asp-action="Docentes" asp-route-id="@item.IdUniversidad">Ver Docentes</a></td>
+                <td><a class="btn btn-danger" asp-controller="Universidad" asp-action="Eliminar" asp-route-id="@item.IdUniversidad">Eliminar</a></td>
+                <td><a class="btn btn-warning" asp-controller="Universidad" asp-action="Actualizar" asp-route-id="@item.IdUniversidad">Actualizar</a></td>
+            </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <h3 class="alert alert-info">Aún no se ha añadido ninguna universidad.</h3>
+            <a class="btn btn-success text-white" asp-controller="Universidad" asp-action="Agregar">Agregar Universidad</a>
+        }
+    </div>
+</div>

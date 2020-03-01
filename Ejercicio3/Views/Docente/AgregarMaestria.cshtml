@@ -1,0 +1,44 @@
+﻿@model Docente
+@{
+    ViewData["Title"] = "Añadir Maestría";
+}
+
+@if (UniversidadManager.Instance.Maestrias.Count > 0)
+{
+    <h1 class="display-4 text-center">Escoja la maestría que impartirá @Model.Nombre</h1>
+    @if((bool)ViewBag.hasError)
+    {
+        <div class="alert alert-warning">@ViewBag.error</div>
+    }
+
+        <div class="text-center row">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="card-columns">
+                        @foreach (var item in UniversidadManager.Instance.Maestrias)
+                        {
+                            <div class="card">
+                                <form method="post" asp-controller="Docente" 
+                                       asp-action="AgregarMaestria"
+                                       asp-route-idDocente="@Model.IdEmpleado"
+                                      asp-route-idMaestria="@item.IdMaestria">
+                                    <div class="card-title">
+                                        <button class="btn btn-link ml-lg-4" type="submit">@item.Nombre</button><br />
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Duración: @item.Duracion años</p>
+                                    </div>
+                                </form>
+                            </div>
+                        }   
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+else
+{
+    <h3 class="alert alert-info">Aún no se ha añadido ninguna maestría.</h3>
+    <a class="btn btn-success text-white" asp-controller="Maestria" asp-action="Agregar">Agregar Maestría</a>
+}
+<a class="btn btn-primary" asp-controller="Docente" asp-action="Maestrias" asp-route-id="@Model.IdEmpleado">Volver</a>

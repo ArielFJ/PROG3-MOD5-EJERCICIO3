@@ -1,12 +1,12 @@
-﻿@model Docente
+﻿@model Universidad
 @{ 
-    ViewData["Title"] = "Agregar Docente";
+    ViewData["Title"] = "Agregar Universidad";
 }
 
-<h1 class="display-4 text-center">Agregar Docente</h1>
+<h1 class="display-4 text-center">Agregar Universidad</h1>
 
 <h3 class="text-info mt-4">Llene el formulario y pulse Guardar para agregar nueva maestría.</h3>
-<form asp-controller="Docente" asp-action="Agregar" method="post" class="mt-4">
+<form asp-controller="Universidad" asp-action="Agregar" method="post" class="mt-4">
     <div class="text-center row">
 
         <div class="form-group">
@@ -15,15 +15,7 @@
                 <input asp-for="Nombre" class="form-control" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-12">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-        </div>      
+        </div>  
 
         <div class="form-group">
             <div class="col-md-5">
@@ -32,4 +24,4 @@
         </div>
     </div>
 </form>
-<a class="btn btn-primary" asp-controller="Docente" asp-action="List">Volver</a>
+<a class="btn btn-primary" asp-controller="Universidades" asp-action="List">Volver</a>

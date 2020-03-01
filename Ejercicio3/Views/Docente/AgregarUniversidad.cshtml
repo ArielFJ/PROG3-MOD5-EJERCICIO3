@@ -1,0 +1,57 @@
+﻿@model Docente
+@{
+    ViewData["Title"] = "Añadir Universidad";
+}
+
+@if (UniversidadManager.Instance.Universidades.Count > 0)
+{
+    <h1 class="display-4 text-center">Escoja la universidad en que trabajará @Model.Nombre</h1>
+    @if ((bool)ViewBag.hasError)
+    {
+        <div class="alert alert-warning">@ViewBag.error</div>
+    }
+
+    <div class="text-center row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="card-columns">
+                    @foreach (var item in UniversidadManager.Instance.Universidades)
+                    {
+                        <div class="card">
+                            <form method="post" asp-controller="Docente"
+                                  asp-action="AgregarUniversidad"
+                                  asp-route-idDocente="@Model.IdEmpleado"
+                                  asp-route-idUniversidad="@item.IdUniversidad">
+                                <div class="card-title">
+                                    <button class="btn btn-link ml-lg-4" type="submit">@item.Nombre</button><br />
+                                </div>
+                                @if (item.Docentes.Count > 0)
+                                {
+                                    <div class="card-body">
+                                        <p><b>Docentes:</b></p> <p>
+                                            @for (int i = 0; i < item.Docentes.Count; i++)
+                                            {
+                                                if (i >= 3)
+                                                {
+                                                    <span>entre otros...</span>
+                                                    break;
+                                                }
+                                                <span>@item.Docentes[i].Nombre,</span>
+                                            }
+                                        </p>
+                                    </div>
+                                }
+                            </form>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h3 class="alert alert-info">Aún no se ha añadido ninguna universidad.</h3>
+    <a class="btn btn-success text-white" asp-controller="Universidad" asp-action="Agregar">Agregar Universidad</a>
+}
+<a class="btn btn-primary" asp-controller="Docente" asp-action="Universidades" asp-route-id="@Model.IdEmpleado">Volver</a>

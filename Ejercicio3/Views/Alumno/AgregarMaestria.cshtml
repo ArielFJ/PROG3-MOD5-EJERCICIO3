@@ -30,11 +30,17 @@
                                         <p>Duración: @item.Duracion años</p>
                                         @if(item.Docentes.Count > 0)
                                         {
-                                            <p><b>Docentes:</b></p> 
-                                            @foreach(var d in item.Docentes)
+                                            <p><b>Docentes:</b></p> <p>
+                                            @for(int i = 0; i < item.Docentes.Count; i++)
                                             {
-                                                <p>@d.Nombre</p>
+                                                if(i >= 3)
+                                                {
+                                                    <span>entre otros...</span>
+                                                    break;
+                                                }
+                                                <span>@item.Docentes[i].Nombre,</span>
                                             }
+                                            </p>
                                         }
                                     </div>
                                 </form>

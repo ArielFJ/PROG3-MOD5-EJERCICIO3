@@ -1,4 +1,4 @@
-﻿@model Maestria
+﻿@model Universidad
 
 <h2 class="display-4">Docentes de @Model.Nombre</h2>
 
@@ -11,23 +11,23 @@
                 <div class="card-body">
                     <h5>@item.Nombre</h5>
                     <h5>@item.Telefono</h5>
-                    <button class="btn btn-danger" onclick="deleteTeacher(@Model.IdMaestria, @item.IdEmpleado)" id="btnBorrar">Eliminar</button>
+                    <button class="btn btn-danger" onclick="deleteTeacher(@Model.IdUniversidad, @item.IdEmpleado)" id="btnBorrar">Eliminar</button>
                 </div>
             </div>
         }
     </div>
     <script>
         // onClick event falta*
-        function deleteTeacher(idMaestria, idDocente) {
+        function deleteTeacher(idUniversidad, idDocente) {
             $.ajax({
                 type: 'POST',
-                url: '/Maestria/EliminarDocente/',
-                data: { idMaestria, idDocente },
+                url: '/Docente/EliminarUniversidad/',
+                data: { idUniversidad, idDocente },
                 success: function () {
                     location.reload();
                 },
                 error: function (data) {
-                    console.log(data);
+                    console.log(data); 
                 }
             });
         }
@@ -39,5 +39,5 @@ else
     <h3 class="alert alert-info">Esta maestría no está siendo impartida por ningún docente.</h3>
 
 }
-<a class="btn btn-primary" asp-controller="Maestria" asp-action="AgregarDocente" asp-route-id="@Model.IdMaestria">Agregar Docente</a>
-<a class="btn btn-primary" asp-controller="Maestria" asp-action="List">Volver</a>
+<a class="btn btn-primary" asp-controller="Universidad" asp-action="AgregarDocente" asp-route-id="@Model.IdUniversidad">Agregar Docente</a>
+<a class="btn btn-primary" asp-controller="Universidad" asp-action="List">Volver</a>

@@ -1,0 +1,41 @@
+﻿@model Docente
+
+<h2 class="display-4">Universidades en que trabaja @Model.Nombre</h2>
+
+@if (Model.Universidades.Count > 0)
+{
+    <div class="card-columns">
+        @foreach (var item in Model.Universidades)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h5>@item.Nombre</h5>
+                    <button class="btn btn-danger" id="btnBorrar" onclick="deleteMastery(@Model.IdEmpleado, @item.IdUniversidad)">Eliminar</button>
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+        function deleteMastery(idDocente, idUniversidad) {
+            $.ajax({
+                type: 'POST',
+                url: '/Docente/EliminarUniversidad/',
+                data: { idDocente, idUniversidad },
+                success: function () {
+                    location.reload();
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+    </script>
+}
+else
+{
+    <h3 class="alert alert-info">Este docente no trabaja en ninguna universidad.</h3>
+
+}
+<a class="btn btn-primary" asp-controller="Docente" asp-action="AgregarUniversidad" asp-route-id="@Model.IdEmpleado">Agregar Universidad</a>
+<a class="btn btn-primary" asp-controller="Docente" asp-action="List">Volver</a>

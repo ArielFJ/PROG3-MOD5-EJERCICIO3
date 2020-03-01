@@ -1,11 +1,11 @@
-﻿@model Maestria
+﻿@model Universidad
 @{
-    ViewData["Title"] = "Añadir Maestría";
+    ViewData["Title"] = "Añadir Docente";
 }
 
 @if (UniversidadManager.Instance.Docentes.Count > 0)
 {
-    <h1 class="display-4 text-center">Escoja el docente que impartirá @Model.Nombre</h1>
+    <h1 class="display-4 text-center">Escoja el docente que trabajará en @Model.Nombre</h1>
     @if((bool)ViewBag.hasError)
     {
         <div class="alert alert-warning">@ViewBag.error</div>
@@ -18,9 +18,9 @@
                         @foreach (var item in UniversidadManager.Instance.Docentes)
                         {
                             <div class="card">
-                                <form method="post" asp-controller="Maestria" 
+                                <form method="post" asp-controller="Universidad" 
                                        asp-action="AgregarDocente"
-                                      asp-route-idMaestria="@Model.IdMaestria"
+                                      asp-route-idUniversidad="@Model.IdUniversidad"
                                        asp-route-idDocente="@item.IdEmpleado">
                                     <div class="card-title">
                                         <button class="btn btn-link ml-lg-4" type="submit">@item.Nombre</button><br />
@@ -55,4 +55,4 @@ else
     <h3 class="alert alert-info">Aún no se ha añadido ningun docente.</h3>
     <a class="btn btn-success text-white" asp-controller="Docente" asp-action="Agregar">Agregar Docente</a>
 }
-<a class="btn btn-primary" asp-controller="Maestria" asp-action="Docentes" asp-route-id="@Model.IdMaestria">Volver</a>
+<a class="btn btn-primary" asp-controller="Universidad" asp-action="Docentes" asp-route-id="@Model.IdUniversidad">Volver</a>

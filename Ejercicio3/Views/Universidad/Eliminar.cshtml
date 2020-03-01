@@ -1,0 +1,29 @@
+﻿@model Universidad
+
+    <div class="text-center">
+        @if (UniversidadManager.Instance.UniversidadDocenteDependencia(Model.IdUniversidad))
+        {
+            <h3 class="alert alert-info">No puede borrar</h3>
+            <p>
+                Esta universidad tiene actualmente docentes trabajando en ella, por lo que
+                primero tiene que dar de baja a dichos docentes para borrar esta universidad.
+            </p>
+
+            <a class="btn btn-primary" asp-controller="Universidad" asp-action="List">Volver</a>
+        }
+        else
+        {
+            <h3 class="alert alert-danger">¿Está seguro de borrar?</h3>
+            <p>
+                La maestría <b>@Model.Nombre</b> con ID <b>@Model.IdUniversidad</b>,
+                será eliminada. Presione el botón <b>Aceptar</b> para confirmar.
+                De lo contrario, pulse <b>Volver</b>.
+            </p>
+            <form method="post" asp-controller="Universidad" asp-action="Eliminar" asp-route-id="@Model.IdUniversidad">
+
+                <button type="submit" class="btn btn-danger">Aceptar</button>
+                <a class="btn btn-primary" asp-controller="Universidad" asp-action="List">Volver</a>
+            </form>
+        }
+
+    </div>
